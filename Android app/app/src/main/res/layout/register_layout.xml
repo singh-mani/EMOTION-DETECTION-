@@ -1,0 +1,140 @@
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="293dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:text="REGISTRATION"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textAlignment="center"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:src="@drawable/registration"/>
+        <LinearLayout
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="USER ID"
+                />
+
+            <EditText
+                android:id="@+id/register_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:inputType="textPersonName"
+                android:hint="ENTER ANY USER ID"
+                />
+        </LinearLayout>
+        <RadioGroup
+            android:layout_width="277dp"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="MALE"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"/>
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="FEMALE" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+
+                android:text="PASSWORD"
+                />
+
+
+
+            <EditText
+                android:id="@+id/register_pwd1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="Password"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PASSWORD"
+                />
+            <EditText
+                android:id="@+id/register_pwd2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:inputType="textPassword"
+                android:hint="confirm password"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/REGISTER"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp"
+        android:text="REGISTER" />
+
+    <TextView
+        android:id="@+id/register_result"
+        android:layout_width="241dp"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="79dp"
+        android:layout_marginLeft="180dp"
+        android:text=""
+        android:textColor="@color/colorPrimaryDark"/>
+</RelativeLayout>

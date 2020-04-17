@@ -8,10 +8,13 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.parsers import FileUploadParser
 from . models import employee
 from . models import img
+from . models import file
 from . serializers import employeeSerializer
 from . serializers import imgSerializer
+from . serializers import fileSerializer
 import json as simplejson
 from . software_output import outputfunction as of
 
@@ -41,7 +44,7 @@ class imgList(APIView):
 
     def post(self , request):
         # print(dict(request.POST.lists()))
-
+        print('\n\n\nhahaha\n\n\n')
         serializer = imgSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -51,3 +54,32 @@ class imgList(APIView):
             print(out)
             return Response({"IMG_URL": "\""+out+"\""}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class fileList(APIView):
+    print(" INSIDE FILELIST HAHSHS")
+    def get(self , request):
+        print(" 111  GETTTT     ")
+        file1=file.objects.all()
+        serializer = fileSerializer(file1,many = True)
+        return Response(serializer.data)
+
+    def post(self , request):
+        print(" IT IS POST  !!!")
+        # print(dict(request.POST.lists()))
+
+        serializer = fileSerializer(data=request.data)
+        if serializer.is_valid():
+            #print(serializer)
+            serializer.save()
+            id=serializer.data['file']
+            print(id)
+            out=of(id)
+            # serializer.data['emotion']=out
+            print(out)
+
+            return Response({'emotion':out}, status=status.HTTP_201_CREATED )
+             
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

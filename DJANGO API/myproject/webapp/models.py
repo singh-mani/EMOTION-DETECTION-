@@ -15,3 +15,13 @@ class img(models.base.Model):
 
     def __str__(self):
         return self.IMG_URL
+
+
+
+class file(models.base.Model):
+    file=models.FileField()
+    emotion=models.TextField()
+
+    def __str__(self):
+        return self.file.name
+

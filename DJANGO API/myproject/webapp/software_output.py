@@ -1,16 +1,14 @@
-def outputfunction(urll):
-    import cv2
+def outputfunction(file_add):
+    from cv2 import cv2
     import numpy as np
     import os
     from keras.models import model_from_json
     from keras.preprocessing import image
-    import urllib.request
 
-    urllib.request.urlretrieve(urll, "local-filename.jpg")
 
     pp=os.getcwd()+"\webapp\jjson.json"
     ph=os.getcwd()+"\webapp\\fer.h5"
-    pi=os.getcwd()+"\\local-filename.jpg"
+    pi=os.getcwd()+file_add
     px=os.getcwd()+"\webapp\\haarcascade_frontalface_default.xml"
     print("\n\n\n\n\n\n\n\n")
     print(pp)
@@ -24,25 +22,29 @@ def outputfunction(urll):
 
     face_cascade = cv2.CascadeClassifier(px)
     img = cv2.imread(pi,1)
-    grayimg = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(grayimg,scaleFactor=1.15,minNeighbors=5)
+    if(img is not None):
+        print(img)
+        grayimg = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    emotions = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral')
-    predicted_emotion="NO_FACE_FOUND"
-    for x,y,w,h in faces:
-        faceimg=grayimg[y:y+h,x:x+w]
-        faceimg = cv2.resize(faceimg,(48,48))
-        img_pixels = image.img_to_array(faceimg)
-        img_pixels = np.expand_dims(img_pixels, axis = 0)
-        img_pixels /= 255
-        predictions = model.predict(img_pixels)
-        max_index = np.argmax(predictions[0])
-        predicted_emotion = emotions[max_index]
-    return predicted_emotion
+        faces = face_cascade.detectMultiScale(grayimg,scaleFactor=1.15,minNeighbors=5)
+
+        emotions = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral')
+        predicted_emotion="NO_FACE_FOUND"
+        for x,y,w,h in faces:
+            faceimg=grayimg[y:y+h,x:x+w]
+            faceimg = cv2.resize(faceimg,(48,48))
+            img_pixels = image.img_to_array(faceimg)
+            img_pixels = np.expand_dims(img_pixels, axis = 0)
+            img_pixels /= 255
+            predictions = model.predict(img_pixels)
+            max_index = np.argmax(predictions[0])
+            predicted_emotion = emotions[max_index]
+        return predicted_emotion
+    else:
+        return "NO IMAGE"
 
 
         #img = cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
-
 
 
 
